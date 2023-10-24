@@ -1,0 +1,37 @@
+version: '3'
+services:
+  library_db:
+    image: postgres:14.5
+    container_name: library_db
+    environment:
+      POSTGRES_DB: MORIN_215
+      POSTGRES_USER: MORIN_215
+      POSTGRES_PASSWORD: MORIN_215
+    volumes:
+      - ./docker/db/scripts/library:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+
+  station_db:
+    image: postgres:14.5
+    container_name: station_db
+    environment:
+      POSTGRES_DB: MORIN_215
+      POSTGRES_USER: MORIN_215
+      POSTGRES_PASSWORD: MORIN_215
+    volumes:
+      - ./docker/db/scripts/station:/docker-entrypoint-initdb.d
+    ports:
+      - "5433:5432"
+
+  station_personells_db:
+    image: postgres:14.5
+    container_name: embulance_db
+    environment:
+      POSTGRES_DB: MORIN_215
+      POSTGRES_USER: MORIN_215
+      POSTGRES_PASSWORD: MORIN_215
+    volumes:
+      - ./docker/db/scripts/embulance:/docker-entrypoint-initdb.d
+    ports:
+      - "5434:5432"
